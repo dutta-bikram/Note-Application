@@ -148,8 +148,8 @@ body {
 .custom-checkbox {
   appearance: none;
   -webkit-appearance: none;
-  width: 20px;
-  height: 20px;
+  width: clamp(0.5rem, 3vh, 1.2rem);
+  height: clamp(0.5rem, 3vh, 1.2rem);
   border: 2px solid #4caf50;
   border-radius: 4px;
   background-color: white;
