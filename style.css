@@ -1,0 +1,146 @@
+body {
+    margin-left: 0;
+    margin-right: 0;
+    box-sizing: border-box;
+
+    background: url('photo.jpg') no-repeat center center fixed;
+}
+.banner{
+    height: 10vh;
+    font-size: clamp(1rem, 5vh, 5vw); /* Responsive font size */
+    padding: 0 5rem;
+    margin: clamp(0.25rem, 4vh, 2rem) 0; /* (min prefered max) scales with prefered but never crosses min or max */
+    display: flex;
+    align-items: center;
+    background: linear-gradient(to right, lightgrey, transparent); 
+}
+
+.line{
+    height: 5vh;
+    font-size: clamp(1rem, 2.5vh, 2.5vw); /* Responsive font size */
+    display: flex;
+    overflow: hidden;
+}
+#date, #time {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+#date{
+    justify-content: flex-start;
+    padding-left: 5rem;
+    background: linear-gradient(to right, lightgrey, transparent);
+}
+#time{
+    justify-content: flex-end;
+    padding-right: 5rem;
+    background: linear-gradient(to left, lightgrey, transparent);
+}
+
+
+
+.scroll-area {
+    display: flex;
+    height: 90vh;
+    width: 100%;
+    font-size: clamp(1rem, 2.5vh, 2.5vw);
+    overflow: hidden;
+}
+.left-pane, .right-pane {
+    flex: 1;
+    overflow-y: auto;
+    background: rgba(255, 255, 255, 0.05);
+    padding-top: clamp(1rem, 5vh, 4rem);
+}
+
+
+
+.left-pane {
+    border-right: 5px solid rgba(255, 255, 255, 0.3); /* thin vertical line */
+}
+.item{
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: auto;
+    padding-left: 5rem;
+    margin: clamp(0.25rem, 4vh, 1rem) 0;
+    background: linear-gradient(to right, lightgrey, transparent);
+}
+
+
+/* right side */
+.plus-button {
+    width: 20vh;
+    height: 20vh;
+    margin-top: clamp(0.25rem, 20vh, 8rem);
+    background-color: #d0ea28;
+    color: white;
+    font-size: clamp(1rem, 10vh, 10vw);
+    font-weight: bold;
+    text-align: center;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+.plus-button:hover {
+    background-color: #388E3C; /* Darker green on hover */
+}
+
+
+.input-container {
+  max-width: 600px;
+  margin: clamp(0.25rem, 4vh, 1rem);
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  display: none;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  background: linear-gradient(to right, lightgrey, transparent);
+}
+#inputBox {
+    width: 100%;
+    min-height: clamp(2rem, 8vh, 12rem);  
+    resize: none;
+    overflow-y: auto;
+    border: none;
+    font-size: 1rem;
+    padding: 0.75rem;
+    outline: none;
+    box-sizing: border-box;
+    line-height: 1.5;
+    border-radius: 0.75rem;
+    background: transparent;
+}
+
+
+#textSaving {
+    display: none;
+    justify-content: center;
+    gap: 2rem; /* space between buttons */
+    margin-top: 2rem;
+}
+.button {
+    height: 5vh;
+    width: 15vh;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* center text horizontally */
+    background-color: lightgrey;
+    border:1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+}
+.button:hover {
+    background-color: transparent;
+    color: white;
+}
+
