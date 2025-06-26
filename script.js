@@ -69,11 +69,28 @@ document.getElementById("saveID").onclick = function () {
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 function addTaskToUI(taskText) {
     const taskList = document.getElementById("taskList");
+
     const taskDiv = document.createElement("div");
     taskDiv.className = "item";
-    taskDiv.textContent = taskText;
+
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.className = "custom-checkbox";
+
+    const label = document.createElement("span");
+    label.textContent = taskText;
+
+    checkbox.addEventListener('change', () => {
+        label.style.textDecoration = checkbox.checked ? 'line-through' : 'none';
+    });
+
+    taskDiv.appendChild(checkbox);
+    taskDiv.appendChild(label);
+
     taskList.appendChild(taskDiv);
 }
 window.onload = () => {
     tasks.forEach(addTaskToUI);
 };
+
+
