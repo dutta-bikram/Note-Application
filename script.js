@@ -32,6 +32,7 @@ const can = document.getElementById('cancelID');
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
 
+
 plusButton.onclick = hidePlusButton;
 function hidePlusButton(){
     plusButton.style.display = 'none';
