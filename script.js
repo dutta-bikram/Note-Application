@@ -66,6 +66,7 @@ document.getElementById("saveID").onclick = function () {
         localStorage.setItem("tasks", JSON.stringify(tasks));
         addTaskToUI(task,tasks.length-1);
         inputBox.value = "";
+        inputBox.style.height = 'auto';
     }
 }
 
@@ -107,5 +108,3 @@ window.onload = () => {
         addTaskToUI(tasks[i],i);
     }
 };
-
-
