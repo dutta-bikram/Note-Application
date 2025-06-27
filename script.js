@@ -53,21 +53,23 @@ function showPlusButton(){
     inputBox.value = "";
 }
 
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
 document.getElementById("saveID").onclick = function () {
-    const inputBox = document.getElementById("inputBox");
     const taskText = inputBox.value.trim();
 
     if (taskText !== "") {
-        tasks.push(taskText); // Add to array
-        localStorage.setItem("tasks", JSON.stringify(tasks)); // Save to localStorage
-        addTaskToUI(taskText); // Add to screen
-        inputBox.value = ""; // Clear input
+        const task = { text: taskText, done: false };
+        tasks.push(task);
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+        addTaskToUI(task);
+        inputBox.value = "";
     }
 }
 
-let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-function addTaskToUI(taskText) {
+
+
+function addTaskToUI(task,i) {
     const taskList = document.getElementById("taskList");
 
     const taskDiv = document.createElement("div");
@@ -76,21 +78,31 @@ function addTaskToUI(taskText) {
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.className = "custom-checkbox";
+    checkbox.checked = task.done;
 
     const label = document.createElement("span");
-    label.textContent = taskText;
+    label.textContent = task.text;
+    label.style.textDecoration = task.done ? 'line-through' : 'none';
 
-    checkbox.addEventListener('change', () => {
-        label.style.textDecoration = checkbox.checked ? 'line-through' : 'none';
-    });
+    
+    checkbox.addEventListener('change',function(){
+        task.done = checkbox.checked;
+        label.style.textDecoration = checkbox.checked ? 'line-through':'none';
+        tasks[i].done = checkbox.checked;
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+    })
 
     taskDiv.appendChild(checkbox);
     taskDiv.appendChild(label);
-
     taskList.appendChild(taskDiv);
 }
+
 window.onload = () => {
-    tasks.forEach(addTaskToUI);
+    tasks = tasks.filter(task => !task.done);
+    localStorage.setItem("tasks",JSON.stringify(tasks));
+    for (let i=0;i<tasks.length;i++) {
+        addTaskToUI(tasks[i],i);
+    }
 };
 
 
