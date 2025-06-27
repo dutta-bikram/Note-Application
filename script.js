@@ -90,6 +90,7 @@ function addTaskToUI(task,i) {
         label.style.textDecoration = checkbox.checked ? 'line-through':'none';
         tasks[i].done = checkbox.checked;
         localStorage.setItem("tasks", JSON.stringify(tasks));
+        console.log("done");
     })
 
     taskDiv.appendChild(checkbox);
