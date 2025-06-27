@@ -4,7 +4,7 @@ body {
     box-sizing: border-box;
 
     background: url('photo.jpg') no-repeat center center fixed;
-
+    background-size: cover;
 }
 .banner{
     height: 10vh;
