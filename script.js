@@ -6,9 +6,8 @@ const year = objDate.getFullYear();
 
 const dateString = `${day} - ${month} - ${year}`;
 document.getElementById("date").textContent = dateString;  //this is the pushing line 
+
 //time
-
-
 function updateClock(){
     const now=new Date();
     let hours = now.getHours();
@@ -28,6 +27,11 @@ updateClock();
 const plusButton = document.getElementsByClassName('plus-button')[0];
 const inputButton = document.getElementsByClassName('input-container')[0];
 const buttons = document.getElementById('textSaving');
+const inputBox = document.getElementById('inputBox');
+const can = document.getElementById('cancelID');
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+
 plusButton.onclick = hidePlusButton;
 function hidePlusButton(){
     plusButton.style.display = 'none';
@@ -37,14 +41,12 @@ function hidePlusButton(){
 }
 
 
-const inputBox = document.getElementById('inputBox');
 inputBox.addEventListener('input', () => {
   inputBox.style.height = 'auto';
   inputBox.style.height = inputBox.scrollHeight + 'px';
 });
 
 
-const can = document.getElementById('cancelID');
 can.onclick = showPlusButton;
 function showPlusButton(){
     plusButton.style.display = 'flex';
@@ -53,7 +55,6 @@ function showPlusButton(){
     inputBox.value = "";
 }
 
-let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
 document.getElementById("saveID").onclick = function () {
     const taskText = inputBox.value.trim();
@@ -62,7 +63,7 @@ document.getElementById("saveID").onclick = function () {
         const task = { text: taskText, done: false };
         tasks.push(task);
         localStorage.setItem("tasks", JSON.stringify(tasks));
-        addTaskToUI(task);
+        addTaskToUI(task,tasks.length-1);
         inputBox.value = "";
     }
 }
