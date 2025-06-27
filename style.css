@@ -75,7 +75,7 @@ body {
     align-items: center;
     justify-content: flex-start;
     overflow:hidden;
-    padding-left: 5rem;
+    padding-left: 6vw;
     margin: clamp(0.25rem, 4vh, 1rem) 0;
     background: linear-gradient(to right, lightgrey, transparent);
 }
@@ -184,4 +184,12 @@ body {
   border: solid white;
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
+}
+
+#clrStorageID{
+    margin-left: 6vw;
+    margin-top: 6vh;
+    font-weight: lighter;
+    font-size: medium;
+    display: none;
 }

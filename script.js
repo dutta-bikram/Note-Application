@@ -30,7 +30,7 @@ const buttons = document.getElementById('textSaving');
 const inputBox = document.getElementById('inputBox');
 const can = document.getElementById('cancelID');
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-
+const clrStorageButton = document.getElementById("clrStorageID");
 
 
 plusButton.onclick = hidePlusButton;
@@ -67,11 +67,11 @@ document.getElementById("saveID").onclick = function () {
         addTaskToUI(task,tasks.length-1);
         inputBox.value = "";
         inputBox.style.height = 'auto';
+        clrStorageButtonVisibility();
     }
 }
 
-
-
+let prevInsertedDiv=clrStorageButton;
 function addTaskToUI(task,i) {
     const taskList = document.getElementById("taskList");
 
@@ -98,11 +98,29 @@ function addTaskToUI(task,i) {
 
     taskDiv.appendChild(checkbox);
     taskDiv.appendChild(label);
-    taskList.appendChild(taskDiv);
+
+    taskList.insertBefore(taskDiv,prevInsertedDiv);
+    prevInsertedDiv=taskDiv;
 }
+//clear storage 
+clrStorageButton.onclick=function(){
+    localStorage.clear();
+    location.reload();
+    console.log("hey");
+}
+
+function clrStorageButtonVisibility(){
+    if(tasks.length != 0){
+        clrStorageButton.style.display = 'flex';
+    }
+}
+
+
+
 
 window.onload = () => {
     tasks = tasks.filter(task => !task.done);
+    clrStorageButtonVisibility();
     localStorage.setItem("tasks",JSON.stringify(tasks));
     for (let i=0;i<tasks.length;i++) {
         addTaskToUI(tasks[i],i);
