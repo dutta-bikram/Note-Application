@@ -71,6 +71,13 @@ document.getElementById("saveID").onclick = function () {
     }
 }
 
+inputBox.addEventListener('keydown',function(event){
+    if (event.key === 'Enter' && !event.shiftKey) {
+        event.preventDefault();
+        document.getElementById("saveID").click();
+    }
+})
+
 let prevInsertedDiv=clrStorageButton;
 function addTaskToUI(task,i) {
     const taskList = document.getElementById("taskList");
