@@ -90,8 +90,8 @@ function addTaskToUI(task,i) {
     checkbox.className = "custom-checkbox";
     checkbox.checked = task.done;
 
-    const label = document.createElement("span");
-    label.textContent = task.text;
+    const label = document.createElement("div");
+    label.innerHTML = task.text.replace(/\n/g,"<br>");
     label.style.textDecoration = task.done ? 'line-through' : 'none';
 
     
@@ -123,7 +123,7 @@ function clrStorageButtonVisibility(){
 }
 
 
-
+``
 
 window.onload = () => {
     tasks = tasks.filter(task => !task.done);
